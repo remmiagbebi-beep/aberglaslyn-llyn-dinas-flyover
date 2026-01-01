@@ -1,8 +1,8 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>Snowdon Via The Llanberis Path 3D Flyover</title>
+<title>Aberglaslyn, Llyn Dinas & Beddgelert 3D Flyover</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css" rel="stylesheet" />
 
@@ -11,7 +11,7 @@
   width: 40px !important;
   height: 40px !important;
 }
-  
+
 html,body{
   margin:0;
   height:100%;
@@ -408,7 +408,8 @@ body.fake-fullscreen #btnMobileMenu{
 <script>
 mapboxgl.accessToken="pk.eyJ1IjoicmVtbWlhZ2JlYmkiLCJhIjoiY21odHRrYTQzMTk0bjJqcjE1b2xhZ2FraSJ9.nTCz33gX0gQt3T4A6VD0oQ";
 
-const GPX_URL="https://raw.githubusercontent.com/remmiagbebi-beep/yr-wddfa-flyover/main/Snowdon%20Via%20The%20Llanberis%20Path.gpx";
+/* Updated to match your screenshot repo + GPX filename */
+const GPX_URL="https://raw.githubusercontent.com/remmiagbebi-beep/aberglaslyn-llyn-dinas-flyover/main/Aberglaslyn%2C%20Llyn%20Dinas%20%26%20Beddgelert.gpx";
 
 /* Issue 2: flip camera so it is behind the walker looking forwards */
 const BEARING_OFFSET_DEG = 180;
@@ -442,10 +443,10 @@ function normBearing(b){
   return x;
 }
 
-/* FAST FORWARD ICON */
+/* FAST FORWARD ICON (updated repo path) */
 (async()=>{
   try{
-    const r=await fetch("https://raw.githubusercontent.com/remmiagbebi-beep/yr-wddfa-flyover/main/icons/fast-forward.svg");
+    const r=await fetch("https://raw.githubusercontent.com/remmiagbebi-beep/aberglaslyn-llyn-dinas-flyover/main/icons/fast-forward.svg");
     const t=await r.text();
     const svg=new DOMParser().parseFromString(t,"image/svg+xml").querySelector("svg");
     if(svg){
@@ -459,10 +460,10 @@ function normBearing(b){
   }catch(e){}
 })();
 
-/* LAYERS ICON */
+/* LAYERS ICON (updated repo path) */
 (async()=>{
   try{
-    const r=await fetch("https://raw.githubusercontent.com/remmiagbebi-beep/yr-wddfa-flyover/main/icons/layers.svg");
+    const r=await fetch("https://raw.githubusercontent.com/remmiagbebi-beep/aberglaslyn-llyn-dinas-flyover/main/icons/layers.svg");
     const t=await r.text();
     const svg=new DOMParser().parseFromString(t,"image/svg+xml").querySelector("svg");
     if(svg){
