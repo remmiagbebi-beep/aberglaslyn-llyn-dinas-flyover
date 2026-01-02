@@ -1,8 +1,8 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>Aberglaslyn, Llyn Dinas & Beddgelert 3D Flyover</title>
+<title>Snowdon Via The Llanberis Path 3D Flyover</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css" rel="stylesheet" />
 
@@ -11,7 +11,7 @@
   width: 40px !important;
   height: 40px !important;
 }
-
+  
 html,body{
   margin:0;
   height:100%;
@@ -408,7 +408,7 @@ body.fake-fullscreen #btnMobileMenu{
 <script>
 mapboxgl.accessToken="pk.eyJ1IjoicmVtbWlhZ2JlYmkiLCJhIjoiY21odHRrYTQzMTk0bjJqcjE1b2xhZ2FraSJ9.nTCz33gX0gQt3T4A6VD0oQ";
 
-/* Updated to match your screenshot repo + GPX filename */
+/* ONLY CHANGES: redirect to your new repo + filenames from the screenshot */
 const GPX_URL="https://raw.githubusercontent.com/remmiagbebi-beep/aberglaslyn-llyn-dinas-flyover/main/Aberglaslyn%2C%20Llyn%20Dinas%20%26%20Beddgelert.gpx";
 
 /* Issue 2: flip camera so it is behind the walker looking forwards */
@@ -443,7 +443,7 @@ function normBearing(b){
   return x;
 }
 
-/* FAST FORWARD ICON (updated repo path) */
+/* FAST FORWARD ICON (redirected repo) */
 (async()=>{
   try{
     const r=await fetch("https://raw.githubusercontent.com/remmiagbebi-beep/aberglaslyn-llyn-dinas-flyover/main/icons/fast-forward.svg");
@@ -460,7 +460,7 @@ function normBearing(b){
   }catch(e){}
 })();
 
-/* LAYERS ICON (updated repo path) */
+/* LAYERS ICON (redirected repo) */
 (async()=>{
   try{
     const r=await fetch("https://raw.githubusercontent.com/remmiagbebi-beep/aberglaslyn-llyn-dinas-flyover/main/icons/layers.svg");
@@ -499,7 +499,7 @@ async function addArrow(){
   ctx.lineWidth=3;
   ctx.stroke();
   ctx.fill();
-  map.addImage("arrow",await createImageBitmap(c),{pixelRatio:2});
+  map.addImage(await createImageBitmap(c), "arrow", { pixelRatio:2 });
 }
 
 function camIcons(){
