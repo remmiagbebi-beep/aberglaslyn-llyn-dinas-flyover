@@ -404,7 +404,7 @@ mapboxgl.accessToken="pk.eyJ1IjoicmVtbWlhZ2JlYmkiLCJhIjoiY21odHRrYTQzMTk0bjJqcjE
 const GPX_URL="https://raw.githubusercontent.com/remmiagbebi-beep/aberglaslyn-llyn-dinas-flyover/main/Aberglaslyn,%20Llyn%20Dinas%20%26%20Beddgelert.gpx";
 
 /* CHANGE: starting view turned by 180 degrees */
-const START_BEARING_OFFSET_DEG = 180;
+const START_VIEW_OFFSET_DEG = 180;
 
 const BEARING_OFFSET_DEG = 180;
 
@@ -531,7 +531,7 @@ function isIOS(){
 
   let initialCenter = [-4.128, 53.118];
   let initialZoom = 13.5;
-  let initialBearing = normBearing(-20 + START_BEARING_OFFSET_DEG);
+  let initialBearing = -20;
 
   if(line){
     const b = turf.bbox(line);
@@ -540,7 +540,7 @@ function isIOS(){
     const coords = line.geometry.coordinates || [];
     if(coords.length >= 2){
       const fwd = turf.bearing(turf.point(coords[0]), turf.point(coords[1]));
-      initialBearing = normBearing(fwd + BEARING_OFFSET_DEG + START_BEARING_OFFSET_DEG);
+      initialBearing = normBearing(fwd + BEARING_OFFSET_DEG);
     }
   }
 
@@ -654,7 +654,7 @@ function isIOS(){
         let fitBearing = initialBearing;
         if(pts.length >= 2){
           const fwd = turf.bearing(turf.point(pts[0]), turf.point(pts[1]));
-          fitBearing = normBearing(fwd + BEARING_OFFSET_DEG);
+          fitBearing = normBearing(fwd + BEARING_OFFSET_DEG + START_VIEW_OFFSET_DEG);
         }
 
         map.fitBounds([[b[0],b[1]],[b[2],b[3]]],{
