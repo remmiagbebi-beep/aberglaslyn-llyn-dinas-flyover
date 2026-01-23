@@ -119,24 +119,6 @@ html,body{
   display:none;
 }
 
-/* Hide all Mapbox branding */
-.mapboxgl-ctrl-logo,
-.mapboxgl-ctrl-attrib,
-.mapboxgl-ctrl-bottom-left,
-.mapboxgl-ctrl-bottom-right{
-  display:none !important;
-}
-
-/* Hide Mapbox canvas attribution safety net */
-#map canvas + .mapboxgl-ctrl-bottom-right,
-#map .mapboxgl-ctrl-bottom-right,
-#map .mapboxgl-ctrl-bottom-left{
-  display:none !important;
-  visibility:hidden !important;
-  opacity:0 !important;
-  pointer-events:none !important;
-}
-
 /* Fake fullscreen hook (desktop / android) */
 body.fake-fullscreen #map{
   position:fixed;
@@ -416,7 +398,7 @@ const GPX_URL="https://raw.githubusercontent.com/remmiagbebi-beep/aberglaslyn-ll
 /* starting view turned by 180 degrees */
 const START_VIEW_OFFSET_DEG = 180;
 
-/* follow camera offset (your existing behaviour) */
+/* follow camera offset */
 const BEARING_OFFSET_DEG = 180;
 
 const START_ZOOM=15.7,
@@ -566,9 +548,8 @@ function isIOS(){
     attributionControl:false
   });
 
-  if(map.getCanvas && map.getCanvas().setAttribute){
-    map.getCanvas().setAttribute("aria-label","");
-  }
+  /* keep attribution visible, prevent duplicates */
+  map.addControl(new mapboxgl.AttributionControl({ compact: false }), "bottom-right");
 
   ["mousedown","touchstart","dragstart","rotatestart","zoomstart","pitchstart"].forEach(ev=>{
     map.on(ev,e=>{
@@ -812,12 +793,8 @@ function tick(ts){
 
     if((camMode==="follow" || camMode==="topdown") && !userOverride){
       const targetCenter=pos;
-
       const fwd = turf.bearing(turf.point(pos),turf.point(nxt));
-
-      /* CHANGE: keep the same 180 rotated start angle during playback */
       const targetBearing = normBearing(fwd + BEARING_OFFSET_DEG + START_VIEW_OFFSET_DEG);
-
       const targetPitch=camMode==="topdown"?0:75;
 
       if(camBearing===null) camBearing=targetBearing;
@@ -864,12 +841,8 @@ function tick(ts){
     const speedWrapEl  = document.getElementById("speedWrap");
     const layersBtnEl  = document.getElementById("btnLayers");
 
-    if(layersBtnEl){
-      uiLeft.appendChild(layersBtnEl);
-    }
-    if(speedWrapEl){
-      uiLeft.appendChild(speedWrapEl);
-    }
+    if(layersBtnEl){ uiLeft.appendChild(layersBtnEl); }
+    if(speedWrapEl){ uiLeft.appendChild(speedWrapEl); }
 
     btnMobileMenu.style.display = "flex";
     setControlsVisible(false);
