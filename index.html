@@ -393,7 +393,7 @@ body.fake-fullscreen #btnMobileMenu{
 mapboxgl.accessToken="pk.eyJ1IjoicmVtbWlhZ2JlYmkiLCJhIjoiY21odHRrYTQzMTk0bjJqcjE1b2xhZ2FraSJ9.nTCz33gX0gQt3T4A6VD0oQ";
 
 /* redirect only */
-const GPX_URL="https://raw.githubusercontent.com/remmiagbebi-beep/aberglaslyn-llyn-dinas-flyover/main/Aberglaslyn,%20Llyn%20Dinas%20%26%20Beddgelert.gpx";
+const GPX_URL="https://raw.githubusercontent.com/The-Lost-Peak/Aberglaslyn-Llyn-Dinas-Flyover/main/Aberglaslyn,%20Llyn%20Dinas%20%26%20Beddgelert.gpx";
 
 /* starting view turned by 180 degrees */
 const START_VIEW_OFFSET_DEG = 180;
@@ -433,7 +433,7 @@ function normBearing(b){
 /* FAST FORWARD ICON (redirect only) */
 (async()=>{
   try{
-    const r=await fetch("https://raw.githubusercontent.com/remmiagbebi-beep/aberglaslyn-llyn-dinas-flyover/main/icons/fast-forward.svg");
+    const r=await fetch("https://raw.githubusercontent.com/The-Lost-Peak/Aberglaslyn-Llyn-Dinas-Flyover/main/icons/fast-forward.svg");
     const t=await r.text();
     const svg=new DOMParser().parseFromString(t,"image/svg+xml").querySelector("svg");
     if(svg){
@@ -450,7 +450,7 @@ function normBearing(b){
 /* LAYERS ICON (redirect only) */
 (async()=>{
   try{
-    const r=await fetch("https://raw.githubusercontent.com/remmiagbebi-beep/aberglaslyn-llyn-dinas-flyover/main/icons/layers.svg");
+    const r=await fetch("https://raw.githubusercontent.com/The-Lost-Peak/Aberglaslyn-Llyn-Dinas-Flyover/main/icons/layers.svg");
     const t=await r.text();
     const svg=new DOMParser().parseFromString(t,"image/svg+xml").querySelector("svg");
     if(svg){
